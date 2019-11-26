@@ -16,14 +16,20 @@ import {
 import PaymentExample from "./ToastModule/PaymentExample";
 
 class App extends React.Component {
-  showToast = () => {
-    ToastExample.show("Hello World");
+  async showToast(){
+    // ToastExample.show("Hello World");
+    try{
+      var token = await PaymentExample.doPayment();
+      console.log(token);
+    }catch(e){
+      console.log(e);
+    }
   }
   render() {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <Button onPress={() => {
-          PaymentExample.doPayment()
+          this.showToast()
         }} title="Clike Me" />
       </View>
     );
