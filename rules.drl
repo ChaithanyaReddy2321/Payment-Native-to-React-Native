@@ -1,0 +1,24 @@
+package rules
+
+import com.drools.model.Employee;
+
+rule "typeA 1"
+	when
+		employee: Employee(salary > 10)
+	then
+		employee.setTax(0);
+	end
+	
+rule "typeB 1"
+	when
+		employee: Employee(salary >= 100)
+	then
+		employee.setTax(20);
+	end
+	
+rule "typeA 2"
+	when
+		employee: Employee(salary >= 1000)
+	then
+		employee.setTax(40);
+	end	
